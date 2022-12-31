@@ -1,0 +1,30 @@
+
+#Convert decimal to base
+def baseconversion(number, base):
+    if number == 0:
+        return '0'
+    if base == 0:
+        return '0'
+    g10 = {10:'A', 11:'B', 12:'C', 13:'D', 14:'E', 15:'F'}
+
+    rem_digits = []
+
+    while number > 0:
+        remainder = number % int(base)
+        if remainder >= 10:
+            remainder = g10[remainder]
+        rem_digits.append(remainder)
+        number = number // int(base)
+        if number == 1:
+            rem_digits.append(number)
+            break
+    r_rem_digits = rem_digits[::-1]
+    print(r_rem_digits)
+    return "".join(str(digit) for digit in r_rem_digits)
+    
+number = int(input("Enter a number in base 10 for me to convert: "))
+base = int(input("Now enter the base you would me to convert to: "))
+
+b = baseconversion(number, base)
+print(b)
+
